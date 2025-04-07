@@ -1,0 +1,58 @@
+from microbit import *
+import music
+
+def left():
+    global x
+    x-=1
+    if x==-1:
+        x=4
+    
+def right():
+    global x
+    x+=1
+    if x==5:
+        x=0
+    
+def up():
+    global y
+    y-=1
+    if y==-1:
+        y=4
+
+    
+def down():
+    global y
+    y+=1
+    if y==5:
+        y=0
+    
+def fire():
+    music.play('a')
+    sleep(100)
+    global reading
+    for i in range(12):
+        reading = pin1.read_analog()
+    music.stop()
+    
+x=2
+y=2
+display.clear()
+display.set_pixel(x,y,4)
+#music.stop()
+while True: 
+    sleep(100)
+    reading = pin1.read_analog()
+    print("Reading: " + str(reading))
+    if reading <20:
+        left()
+    elif reading <160:
+        up()
+    elif reading <350:
+        down()
+    elif reading <520:
+        right()
+    elif reading > 730 and reading <750:
+        fire()
+    display.clear()
+    display.set_pixel(x,y,4)
+
