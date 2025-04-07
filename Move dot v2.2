@@ -1,0 +1,87 @@
+from microbit import *
+import music, random
+
+def left():
+    global x
+    x-=1
+    if x==-1:
+        x=4
+    
+def right():
+    global x
+    x+=1
+    if x==5:
+        x=0
+    
+def up():
+    global y
+    y-=1
+    if y==-1:
+        y=4
+
+def down():
+    global y
+    y+=1
+    if y==5:
+        y=0
+    
+def fire():
+    music.play('a')
+    sleep(100)
+    music.stop()
+
+
+
+x=2
+y=2
+count=0
+tx=random.randint(0, 4)
+ty=random.randint(0, 4)
+display.clear()
+display.set_pixel(tx,ty,9)
+sleep(500)
+display.set_pixel(x,y,4)
+while True: 
+    sleep(150)
+    reading = pin1.read_analog()
+    print("Reading: " + str(reading))
+    if reading <20:
+        left()
+    elif reading <160:
+        up()
+    elif reading <350:
+        down()
+    elif reading <520:
+        right()
+    elif reading > 730 and reading <750:
+        fire()
+    display.clear()
+    display.set_pixel(tx,ty,9)
+    display.set_pixel(x,y,4)
+    if x==tx and y==ty:
+        music.play(music.POWER_UP, wait=False)
+        for i in range(8):
+            display.show(Image('50005:'
+                   '05050:'
+                   '00500:'
+                   '05050:'
+                   '50005'))
+            sleep(50)
+            display.show(Image('00000:'
+                   '09090:'
+                   '00900:'
+                   '09090:'
+                   '00000'))
+            sleep(50)
+        count+=1
+        display.clear()
+        tx=random.randint(0, 4)
+        while tx==x:
+            tx=random.randint(0, 4)
+        ty=random.randint(0, 4)
+        while ty==y:
+            ty=random.randint(0, 4)
+        display.set_pixel(tx,ty,9)
+        display.set_pixel(x,y,4)
+        print("Count: " + str(count))
+
