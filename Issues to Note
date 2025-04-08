@@ -1,0 +1,5 @@
+The servo needs external power from a battery pack to work as expected/desired.
+The battery needs to share a common ground with the Micro:bit
+Servo brown wire - Ground
+Servo red wire - voltage - power from a battery back; if you have issues look here first!
+Servo orange wire - Data in from Micro:bit analog Pin
