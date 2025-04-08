@@ -1,6 +1,6 @@
 This project is for the BBC Micro:bit and is written in python. 
 
-This is the first stage for me to create a remote control robot with two radio linked micro:bits. 
+This main objective is for me to create a remote control robot with two radio linked micro:bits using a directional keypad and servos. 
 
 The 1st stage will be to get the Keyes Keyer-AD-Key K845037 board interacting correctly with the Micro:bit. 
 This is a 5 button (up, down, left, right, "fire") board.
